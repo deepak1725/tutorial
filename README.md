@@ -75,6 +75,16 @@ python manage.py createsuperuser
 localhost:8000/admin
 ```
 
+### Production Setup via Docker
+
+1. Update Database in settings.py to Postgres Engine.
+2. Copy .env_default to .env at same level.
+3. Run
+    ```commandline
+    docker-compose up --build
+    ```
+4. Served at `0.0.0.0:8000`
+
 
 ## API Collection
 https://www.getpostman.com/collections/1cd8502615f4c4930b46 

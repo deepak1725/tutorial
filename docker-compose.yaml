@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  db:
+    container_name: postgresdb
+    image: postgres:latest
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 5433:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  web:
+    container_name: django
+    build: .
+    command: >
+      gunicorn my_project.wsgi:application --bind 0.0.0.0:8000 --workers=4
+    env_file:
+      - .env
+    expose:
+      - 8000
+    depends_on:
+      - db
+  nginx:
+    container_name: nginx
+    image: nginx:mainline-alpine
+    restart: always
+    ports:
+      - 1337:80
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - web
+
+volumes:
+  postgres-data:

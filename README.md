@@ -74,3 +74,10 @@ python manage.py createsuperuser
 ```commandline
 localhost:8000/admin
 ```
+
+
+## API Collection
+https://www.getpostman.com/collections/1cd8502615f4c4930b46 
+
+### References
+https://gist.github.com/deepak1725/cc97b2a23b6db2e05b6f26e39320ee5e 
